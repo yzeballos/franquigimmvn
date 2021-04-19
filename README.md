@@ -1,0 +1,2 @@
+# franquigimmvn
+JSF, JPA, maven
