@@ -1,4 +1,4 @@
-## franquigim
+## franquigimmvn
 Proyecto de muestra JSF JPA con Java y mvn
 
 Para descargar el projecto desde github hacer, abrir un terminal y en un directorio cualquiera:
@@ -52,3 +52,31 @@ Importante: En "./franquigim/src/conf/persist.xml" Se pueden cambiar las credenc
       <property name="javax.persistence.jdbc.user" value="root"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.password" value="root"/>
+```      
+
+## Configuracion
+El directorio de glassfish requiere tener un archivo ".env" (sic) con la API_KEY de clima y eventualmente todas las API_KEY que se quieran mantener privadas.
+Asi que si el directorio de glassfish es:
+```      
+/home/misay/servers/glassfish-5.0.1/glassfish5
+```      
+Ahi se debe crear el archivo .env
+
+```      
+touch ".env"
+ls
+drwxr-xr-x  2 misay misay 4,0K ene 15  2019 bin
+-rw-rw-r--  1 misay misay   47 abr 20 17:42 .env
+drwxr-xr-x 11 misay misay 4,0K ene 15  2019 glassfish
+drwxr-xr-x  4 misay misay 4,0K ene 15  2019 javadb
+drwxr-xr-x  6 misay misay 4,0K ene 15  2019 mq
+```      
+
+Tambien se debe cambiar en el el .pom el directorio del glassfish para que funcione el deploy.
+
+Comenzar el glassfish con normalidad.
+Tambien se puede iniciar con el siguiente tip:
+``` 
+~/servers/glassfish-5.0.1/glassfish5$ sudo java -Djava.endorsed.dirs=$PWD/glassfish/modules/endorsed -jar glassfish/modules/glassfish.jar
+``` 
+
