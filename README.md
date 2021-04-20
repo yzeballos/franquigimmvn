@@ -72,11 +72,58 @@ drwxr-xr-x  4 misay misay 4,0K ene 15  2019 javadb
 drwxr-xr-x  6 misay misay 4,0K ene 15  2019 mq
 ```      
 
-Tambien se debe cambiar en el el .pom el directorio del glassfish para que funcione el deploy.
+y agregarle el contenido:
+```      
+API_KEY_CLIMA=312321321321312
+```      
+Donde 312321321321312 es un valor valido.
+
+Tambien se debe cambiar en el el .pom el directorio del glassfish para que funcione el deploy del plugin de artifactId maven-glassfish-plugin.
+
+```      
+             <plugin>
+                <groupId>org.glassfish.maven.plugin</groupId>
+                <artifactId>maven-glassfish-plugin</artifactId>
+                <version>2.1</version>
+                <configuration>
+                    <glassfishDirectory>/home/misay/servers/glassfish-5.0.1/glassfish5/glassfish</glassfishDirectory>
+                    <user>admin</user>
+                    <passwordFile>/home/misay/servers/glassfish-5.0.1/glassfish5/glassfish/domains/domain1/config/domain-passwords</passwordFile>
+                    <domain>
+                        <name>domain1</name>
+                        <httpPort>8080</httpPort>
+                        <adminPort>4848</adminPort>
+                    </domain>
+                    <components>
+                        <component>
+                            <name>${project.artifactId}</name>
+                            <artifact>target/${project.artifactId}-${project.version}.war</artifact>
+                        </component>
+                    </components>
+                    <debug>true</debug>
+                    <terse>false</terse>
+                    <echo>true</echo>
+                </configuration>
+            </plugin>
+```      
+Es decir en este ejemplo son:
+```      
+<glassfishDirectory>/home/misay/servers/glassfish-5.0.1/glassfish5/glassfish</glassfishDirectory>
+ <passwordFile>/home/misay/servers/glassfish-5.0.1/glassfish5/glassfish/domains/domain1/config/domain-passwords</passwordFile>
+```
+Se deben sustituir por los valores correspondientes del glassfish local.
+
+##Compilacion y ejecucion
 
 Comenzar el glassfish con normalidad.
 Tambien se puede iniciar con el siguiente tip:
 ``` 
 ~/servers/glassfish-5.0.1/glassfish5$ sudo java -Djava.endorsed.dirs=$PWD/glassfish/modules/endorsed -jar glassfish/modules/glassfish.jar
+``` 
+luego se puede hacer todo con "mvn"
+
+``` 
+$ mvn clean install
+$ mvn glassfish:deploy
 ``` 
 
