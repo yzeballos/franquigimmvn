@@ -113,7 +113,7 @@ Es decir en este ejemplo son:
 ```
 Se deben sustituir por los valores correspondientes del glassfish local.
 
-##Compilacion y ejecucion
+## Compilacion y ejecucion
 
 Comenzar el glassfish con normalidad.
 Tambien se puede iniciar con el siguiente tip:
