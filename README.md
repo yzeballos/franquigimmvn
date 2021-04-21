@@ -132,10 +132,18 @@ franquigimmvn-1.0-SNAPSHOT.war
 ``` 
 en la carpeta target.
 
+Se puede deployar con:
 ``` 
 $ mvn glassfish:deploy
 ``` 
-
+O redeployar con:
+``` 
+$ mvn glassfish:redeploy
+``` 
+Luegon con un navegador se debe acceder a la siguiente URL:
+``` 
+http://localhost:8080/franquigimmvn-1.0-SNAPSHOT/
+``` 
 Informacion extra:
 ``` 
 $ mvn --version
