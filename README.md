@@ -120,10 +120,28 @@ Tambien se puede iniciar con el siguiente tip:
 ``` 
 ~/servers/glassfish-5.0.1/glassfish5$ sudo java -Djava.endorsed.dirs=$PWD/glassfish/modules/endorsed -jar glassfish/modules/glassfish.jar
 ``` 
-luego se puede hacer todo con "mvn"
+luego se puede compilar y deployar el proyecto con maven (comando "mvn" en linux)
 
 ``` 
 $ mvn clean install
+``` 
+Esto va a generar el archivo 
+
+``` 
+franquigimmvn-1.0-SNAPSHOT.war
+``` 
+en la carpeta target.
+
+``` 
 $ mvn glassfish:deploy
 ``` 
 
+Informacion extra:
+``` 
+$ mvn --version
+Apache Maven 3.3.9
+
+$ java -version
+java version "1.8.0_161"
+
+``` 
